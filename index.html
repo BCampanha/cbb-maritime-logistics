@@ -1,0 +1,34 @@
+<?php
+    require_once('db.php');
+    $username = "Foo";
+    $sql = "SELECT * FROM `users` WHERE `username` = '$username'"; #sua query sql, um exemplo o SELECT *
+    $query_exec = $mysqli->query($sql); #Executa o comando select.
+    $row = $query_exec->num_rows; #Número de resultados encontrados.
+    $get = $query_exec->fetch_array(); #Cria um vetor associativo com os dados.
+    if($row > 0) {
+        #encontrou resultados.
+        $usuario = $get['username']; 
+        $perfil = $get['profile'];
+        echo "{$usuario} {$perfil}"; #Pode fazer um echo de um html, ex: echo '<div id="profile">'.$perfil.'</div>';
+        #O resultado do echo seria: Foo é um cara legal.
+
+    } else {
+        #não encontrou nada.    
+    }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>Teste</h1>
+    <!--Colocando as tags PHP para exibir o echo no HTML-->
+    <div>
+        <?php echo $usuario; ?>
+    </div>
+</body>
+</html>
