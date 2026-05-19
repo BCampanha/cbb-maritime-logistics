@@ -130,3 +130,12 @@ CREATE TABLE custos_extras (
         REFERENCES processo(id_processo)
         ON DELETE CASCADE
 );
+
+-- =====================================================
+-- TABELA: kpi_dashboard
+-- =====================================================
+CREATE TABLE kpi_dashboard (
+    chave VARCHAR(50) PRIMARY KEY,
+    valor NUMERIC(12,2) NOT NULL,
+    descricao VARCHAR(150)
+);

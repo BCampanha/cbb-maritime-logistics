@@ -1,5 +1,5 @@
 -- =====================================================
--- CONSULTA TESTE
+-- CONSULTAS TESTE
 -- =====================================================
 
 SELECT * FROM empresa;
@@ -9,3 +9,9 @@ SELECT * FROM mercadoria;
 SELECT * FROM cotacao_cliente;
 SELECT * FROM processo;
 SELECT * FROM custos_extras;
+
+-- =====================================================
+-- Consultar policies
+-- =====================================================
+SELECT *
+FROM pg_policies;
