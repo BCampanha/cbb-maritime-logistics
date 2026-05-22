@@ -9,9 +9,9 @@ const client = window.supabase.createClient(
 // função para listar empresas
 async function carregarEmpresas() {
 
-    // seleciona todos os resultados da tabela empresa
+    // seleciona todos os resultados da tabela kpi_dashboard (calculada pelo python)
     const { data, error } = await client
-        .from('empresas')
+        .from('kpis_dashboard')
         .select('*');
 
     if (error) {
@@ -24,16 +24,20 @@ async function carregarEmpresas() {
     // pega a div com id resultado
     const div = document.getElementById('resultado');
 
-    // cria um novo parágrafo com o nome da empresa e a categoria, para cada linha do resultado
-    data.forEach(empresa => {
-
-        div.innerHTML += `
-            <p>
-                <strong>${empresa.nome}</strong>
-                - ${empresa.categoria}
-            </p>
-        `;
+    // cria um novo parágrafo com os resultados esperados
+    
+    // 1. Lista de kpis
+    const kpis = {};
+    data.forEach(item => {
+        kpis[item.chave] = item.valor;
     });
+
+    div.innerHTML = `
+        <p>
+            <strong>Total de custos extras: R$ ${kpis.total_custos_extras}</strong>
+            - Total de processos: ${kpis.total_processos}
+        </p>
+    `;
 }
 
 carregarEmpresas();
