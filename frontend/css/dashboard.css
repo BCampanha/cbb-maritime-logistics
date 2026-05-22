@@ -1,0 +1,24 @@
+#header {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2vh;
+    .img-topo {
+        height: 5vh;
+        margin: 0 2vw 0 2vw;
+    }
+    div > button {
+        margin-right: 4vw;
+    }
+}
+
+#porta {
+    height: 1.5rem;
+}
+
+#main {
+    display: flex;
+    #menu-lateral {
+        display: flex;
+        flex-direction: column;
+    }
+}

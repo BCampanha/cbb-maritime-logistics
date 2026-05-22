@@ -21,10 +21,10 @@ form {
         flex-direction: column;
         width: 30vw;
         input {
-            height: 3rem;
+            padding: 1.1em;
             border: none;
             border-radius: 15px;
-            margin-bottom: 5vh;
+            margin: 0.5vh 0 5vh 0;
         }
     }
     a {
