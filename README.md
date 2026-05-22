@@ -1,6 +1,6 @@
 # CBB Maritime Logistics - Dashboard
 
-Sistema de gerenciamento logístico marítimo desenvolvido com PostgreSQL no Supabase e dashboard web em HTML, CSS e JavaScript.
+Sistema de gerenciamento logístico marítimo desenvolvido com PostgreSQL no Supabase, dashboard web em HTML, CSS e JavaScript, e análise de dados em Python.
 
 ## Integrantes
 
