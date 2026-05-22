@@ -1,0 +1,36 @@
+body {
+    background-image: url("/frontend/images/fundo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.logo {
+    img {
+        margin: 5vh 0 0 5vh;
+        height: 10vh;
+    }
+}
+
+form {
+    margin: 20vh 0 0 10vh;
+    fieldset {
+        border: none;
+        display: flex;
+        flex-direction: column;
+        width: 30vw;
+        input {
+            height: 3rem;
+            border: none;
+            border-radius: 15px;
+            margin-bottom: 5vh;
+        }
+    }
+    a {
+        border-radius: 20px;
+        color: white;
+        background-color: blue;
+        padding: 1vh 3vw;
+    }
+}
