@@ -6,8 +6,8 @@ const client = window.supabase.createClient(
     supabaseKey
 );
 
-// função para listar empresas
-async function carregarEmpresas() {
+// função para carregar Dashboard
+async function carregarDashboard() {
 
     // seleciona todos os resultados da tabela kpi_dashboard (calculada pelo python)
     const { data, error } = await client
@@ -40,4 +40,4 @@ async function carregarEmpresas() {
     `;
 }
 
-carregarEmpresas();
+carregarDashboard();
