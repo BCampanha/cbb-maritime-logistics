@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBB Dashboard</title>
+
+    <!-- Página de estilos -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Conexão com o Supabase pela API JavaScript oficial do Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+    <div id="header">
+        <img src="" alt="Logo horizontal">
+        <button>Em andamento</button>
+        <button>Finalizados</button>
+        <button>Futuros</button>
+        <img src="" alt="Logo de usuário">
+    </div>
+
+    <div id="main">
+        <div id="menu-lateral">
+            <h1>Clientes</h1>
+            <ul>
+                <li><a href="">Amazon</a></li>
+                <li><a href="">C&A</a></li>
+            </ul>
+            <a href="dashboard.html">
+                <img src="" alt="Porta (sair)">
+            </a>
+        </div>
+
+        <div id="conteudo-principal">
+            <div id="abas">
+                <button>Operacional</button>
+                <button>Financeiro</button>
+            </div>
+
+            <div id="dashboard">
+
+                <div id="operacional-especifico">
+                    <div class="linha-cards">
+                        <div class="card brilho">
+                            <h2>47</h2>
+                            <h3>Processos Ativos</h3>
+                        </div>
+    
+                        <div class="card brilho">
+                            <h2>12</h2>
+                            <h3>Ocorrências Abertas</h3>
+                        </div>
+
+                        <div class="card brilho">
+                            <h2>73%</h2>
+                            <h3>docs Processados</h3>
+                        </div>
+
+                        <div class="card brilho">
+                            <h2>8,4</h2>
+                            <h3>Dias em média</h3>
+                        </div>
+                    </div>
+
+                    <div class="full">
+                        <div class="card azul">
+                            <h2>Rota da viagem</h2>
+                            <div class="card azul-escuro">
+                                <div class="rota">
+                                    <div>
+                                        <img src="https://placehold.co/100x100" alt="Porto">
+                                        <p><strong>Shangai</strong></p>
+                                        <p>China - Origem</p>
+                                    </div>
+                                    <span>Malaca</span>
+                                    <div>
+                                        <p>Suez</p>
+                                        <img src="https://placehold.co/100x100" alt="Barco">
+                                    </div>
+                                    <span>Atlântico</span>
+                                    <div>
+                                        <img src="https://placehold.co/100x100" alt="Chegada">
+                                        <p><strong>Santos</strong></p>
+                                        <p>Brasil - Destino</p>
+                                    </div>
+                                </div>
+                                <div class="rota-footer">
+                                    <div>
+                                        <h3>19.400</h3>
+                                        <p>km de distância</p>
+                                    </div>
+                                    <div>
+                                        <h3>18 dias</h3>
+                                        <p>Tempo de trânsito</p>
+                                    </div>
+                                    <div>
+                                        <h3>3</h3>
+                                        <p>Escalas</p>
+                                    </div>
+                                    <div>
+                                        <h3><em>Em curso</em></h3>
+                                        <p>Status</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h2>Custos extras</h2>
+                            <img src="https://placehold.co/350x200" alt="Gráfico de linha">
+                        </div>
+
+                        <div class="card">
+                            <h2>Ocorrências</h2>
+                            <h3>12</h3>
+                            <p>Abertas</p>
+                            <ul>
+                                <li>
+                                    <div>
+                                        <span>Avarias</span>
+                                        <span>4</span>
+                                    </div>
+                                    <img src="https://placehold.co/100x10" alt="">
+                                </li>
+                                <li>
+                                    <div>
+                                        <span>Extravio</span>
+                                        <span>3</span>
+                                    </div>
+                                    <img src="https://placehold.co/100x10" alt="">
+                                </li>
+                                <li>
+                                    <div>
+                                        <span>Atraso</span>
+                                        <span>5</span>
+                                    </div>
+                                    <img src="https://placehold.co/100x10" alt="">
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <h2>Documentos processados</h2>
+                            <ul>
+                                <li>
+                                    <div>
+                                        <span>Processados</span>
+                                        <span>73%</span>
+                                    </div>
+                                    <img src="https://placehold.co/300x10" alt="">
+                                </li>
+                                <li>
+                                    <div>
+                                        <span>Em Análise</span>
+                                        <span>18%</span>
+                                    </div>
+                                    <img src="https://placehold.co/300x10" alt="">
+                                </li>
+                                <li>
+                                    <div>
+                                        <span>Pendentes</span>
+                                        <span>9%</span>
+                                    </div>
+                                    <img src="https://placehold.co/100x10" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="financeiro-especifico">
+                    <div class="linha-cards">
+                        <div class="card brilho">
+                            <h2>R$54.565.135</h2>
+                            <h3>Total de Custos extras</h3>
+                        </div>
+                        <div class="card brilho">
+                            <h2>R$12.300.300</h2>
+                            <h3>Faturamento do Processo</h3>
+                        </div>
+                        <div class="card brilho">
+                            <h2>R$3.120.400</h2>
+                            <h3>Custos de Armazenagem</h3>
+                        </div>
+                        <div class="card brilho">
+                            <h2>R$8.940.000</h2>
+                            <h3>Custos de Estadia</h3>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>Demurrage</h2>
+                        <div class="azul-claro">
+                            <h2>38</h2>
+                            <p><strong>dias totais</strong></p>
+                        </div>
+                        <div class="azul-claro">
+                            <h2>R$1.200/dia</h2>
+                            <p><strong>preço médio</strong></p>
+                        </div>
+                        <div class="azul-claro">
+                            <h2>R$45.600</h2>
+                            <p><strong>Custo total</strong></p>
+                        </div>
+                        <div class="azul-claro">
+                            <h2>7</h2>
+                            <p><strong>Containers</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>Armazenagem</h2>
+                        <div class="azul-claro">
+                            <h2>22</h2>
+                            <p><strong>dias totais</strong></p>
+                        </div>
+                        <div class="azul-claro">
+                            <h2>R$480/dia</h2>
+                            <p><strong>preço médio</strong></p>
+                        </div>
+                        <div class="azul-claro">
+                            <h2>R$10.560</h2>
+                            <p><strong>Custo total</strong></p>
+                        </div>
+                        <div class="azul-claro">
+                            <h2>4</h2>
+                            <p><strong>Armazéns</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>Distribuição de custos</h2>
+                        <img src="https://placehold.co/200x200" alt="Gráfico de pizza">
+                    </div>
+
+                    <div class="card">
+                        <h2>Faturamento do processo</h2>
+                        <table>
+                            <tr><th>Processo</th><th>Valor Faturado</th><th>Status</th></tr>
+                            <tr><td>AMZ-2026-001</td><td>R$320.000</td><td>Pago</td></tr>
+                            <tr><td>AMZ-2026-002</td><td>R$180.000</td><td>Pendente</td></tr>
+                            <tr><td>AMZ-2026-003</td><td>R$450.000</td><td>Pago</td></tr>
+                            <tr><td>AMZ-2026-004</td><td>R$210.000</td><td>Vencido</td></tr>
+                            <tr><td>AMZ-2026-005</td><td>R$390.000</td><td>Pago</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="card">
+                        <h2>Custos extras</h2>
+                        <img src="https://placehold.co/300x200" alt="Gráfico de linha">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- Seção que será manipulada pelo JS para exibir o resultado -->
+    <div id="resultado"></div>
+
+    <!-- Ao final, chama o script JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
