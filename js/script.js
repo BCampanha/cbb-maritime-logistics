@@ -11,7 +11,7 @@ async function carregarEmpresas() {
 
     // seleciona todos os resultados da tabela empresa
     const { data, error } = await client
-        .from('empresa')
+        .from('empresas')
         .select('*');
 
     if (error) {

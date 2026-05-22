@@ -38,7 +38,7 @@ CREATE TABLE viagens (
 
     CONSTRAINT fk_viagem
         FOREIGN KEY (id_navio)
-        REFERENCES navio(id_navio)
+        REFERENCES navios(id_navio)
         ON DELETE CASCADE
 );
 
@@ -54,9 +54,9 @@ CREATE TABLE etapas_viagem (
 
     PRIMARY KEY (id_viagem, numero_etapa),
 
-    CONSTRAINT fk_etapa_viagem
+    CONSTRAINT fk_etapas_viagem
         FOREIGN KEY (id_viagem)
-        REFERENCES viagem(id_viagem)
+        REFERENCES viagens(id_viagem)
         ON DELETE CASCADE
 );
 
@@ -95,19 +95,19 @@ CREATE TABLE processos (
 
     CONSTRAINT fk_processo_viagem
         FOREIGN KEY (id_viagem)
-        REFERENCES viagem(id_viagem),
+        REFERENCES viagens(id_viagem),
 
     CONSTRAINT fk_processo_mercadoria
         FOREIGN KEY (id_mercadoria)
-        REFERENCES mercadoria(id_mercadoria),
+        REFERENCES mercadorias(id_mercadoria),
 
     CONSTRAINT fk_processo_empresa
         FOREIGN KEY (id_empresa)
-        REFERENCES empresa(id_empresa),
+        REFERENCES empresas(id_empresa),
 
     CONSTRAINT fk_processo_cotacao
         FOREIGN KEY (numerario_cotacao)
-        REFERENCES cotacao_cliente(numerario_cotacao)
+        REFERENCES cotacoes_cliente(numerario_cotacao)
 );
 
 -- =====================================================
@@ -127,7 +127,7 @@ CREATE TABLE custos_extras (
 
     CONSTRAINT fk_custos_processo
         FOREIGN KEY (id_processo)
-        REFERENCES processo(id_processo)
+        REFERENCES processos(id_processo)
         ON DELETE CASCADE
 );
 

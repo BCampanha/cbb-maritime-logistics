@@ -13,7 +13,7 @@ def rodar_analise():
     # EXTRAÇÃO: Puxa dados brutos do banco
     # ---------------------------------------------------
     dados_custos = client.table('custos_extras').select('*').execute()
-    dados_processos = client.table('processo').select('*').execute()
+    dados_processos = client.table('processos').select('*').execute()
     
     # Transforma a resposta do Supabase em DataFrames do Pandas (tabelas do Python)
     df_custos = pd.DataFrame(dados_custos.data)
@@ -51,7 +51,7 @@ def rodar_analise():
 
     # O comando 'upsert' insere o dado ou atualiza se ele já existir
     for kpi in indicadores:
-        client.table('kpi_dashboard').upsert(kpi).execute()
+        client.table('kpis_dashboard').upsert(kpi).execute()
 
     print("Indicadores atualizados com sucesso no Supabase!")
 

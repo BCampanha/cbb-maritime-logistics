@@ -2,12 +2,12 @@
 -- CONSULTAS TESTE
 -- =====================================================
 
-SELECT * FROM empresa;
-SELECT * FROM navio;
-SELECT * FROM viagem;
-SELECT * FROM mercadoria;
-SELECT * FROM cotacao_cliente;
-SELECT * FROM processo;
+SELECT * FROM empresas;
+SELECT * FROM navios;
+SELECT * FROM viagens;
+SELECT * FROM mercadorias;
+SELECT * FROM cotacoes_cliente;
+SELECT * FROM processos;
 SELECT * FROM custos_extras;
 
 -- =====================================================

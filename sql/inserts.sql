@@ -1,3 +1,4 @@
+
 -- =====================================================
 -- INSERÇÃO DE DADOS EXEMPLO
 -- =====================================================
@@ -6,7 +7,7 @@
 -- INSERT: empresa
 -- =====================================================
 
-INSERT INTO empresa (
+INSERT INTO empresas (
     id_empresa,
     nome,
     cnpj,
@@ -36,7 +37,7 @@ VALUES
 -- INSERT: navio
 -- =====================================================
 
-INSERT INTO navio (
+INSERT INTO navios (
     nome_navio,
     bandeira,
     observacoes
@@ -57,7 +58,7 @@ VALUES
 -- INSERT: viagem
 -- =====================================================
 
-INSERT INTO viagem (
+INSERT INTO viagens (
     id_viagem,
     pais_origem,
     porto_origem,
@@ -90,7 +91,7 @@ VALUES
 -- INSERT: etapa_viagem
 -- =====================================================
 
-INSERT INTO etapa_viagem (
+INSERT INTO etapas_viagem (
     id_viagem,
     numero_etapa,
     local_etapa,
@@ -124,7 +125,7 @@ VALUES
 -- INSERT: mercadoria
 -- =====================================================
 
-INSERT INTO mercadoria (
+INSERT INTO mercadorias (
     id_mercadoria,
     peso,
     volume,
@@ -154,7 +155,7 @@ VALUES
 -- INSERT: cotacao_cliente
 -- =====================================================
 
-INSERT INTO cotacao_cliente (
+INSERT INTO cotacoes_cliente (
     numerario_cotacao,
     moeda,
     taxa,
@@ -178,7 +179,7 @@ VALUES
 -- INSERT: processo
 -- =====================================================
 
-INSERT INTO processo (
+INSERT INTO processos (
     id_processo,
     data_inicio_processo,
     id_viagem,
