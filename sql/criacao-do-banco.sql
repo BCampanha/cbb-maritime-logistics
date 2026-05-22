@@ -5,9 +5,9 @@
 -- =====================================================
 
 -- =====================================================
--- TABELA: empresa
+-- TABELA: empresas
 -- =====================================================
-CREATE TABLE empresa (
+CREATE TABLE empresas (
     id_empresa VARCHAR(50) PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
     cnpj VARCHAR(18) UNIQUE NOT NULL,
@@ -15,9 +15,9 @@ CREATE TABLE empresa (
 );
 
 -- =====================================================
--- TABELA: navio
+-- TABELA: navios
 -- =====================================================
-CREATE TABLE navio (
+CREATE TABLE navios (
     id_navio SERIAL PRIMARY KEY,
     nome_navio VARCHAR(100) NOT NULL,
     bandeira VARCHAR(50),
@@ -25,9 +25,9 @@ CREATE TABLE navio (
 );
 
 -- =====================================================
--- TABELA: viagem
+-- TABELA: viagens
 -- =====================================================
-CREATE TABLE viagem (
+CREATE TABLE viagens (
     id_viagem INTEGER PRIMARY KEY,
     pais_origem VARCHAR(100),
     porto_origem VARCHAR(100),
@@ -43,9 +43,9 @@ CREATE TABLE viagem (
 );
 
 -- =====================================================
--- TABELA: etapa_viagem
+-- TABELA: etapas_viagem
 -- =====================================================
-CREATE TABLE etapa_viagem (
+CREATE TABLE etapas_viagem (
     id_viagem INTEGER NOT NULL,
     numero_etapa INTEGER NOT NULL,
     local_etapa VARCHAR(150),
@@ -61,9 +61,9 @@ CREATE TABLE etapa_viagem (
 );
 
 -- =====================================================
--- TABELA: mercadoria
+-- TABELA: mercadorias
 -- =====================================================
-CREATE TABLE mercadoria (
+CREATE TABLE mercadorias (
     id_mercadoria INTEGER PRIMARY KEY,
     peso NUMERIC(10,2),
     volume NUMERIC(10,2),
@@ -73,9 +73,9 @@ CREATE TABLE mercadoria (
 );
 
 -- =====================================================
--- TABELA: cotacao_cliente
+-- TABELA: cotacoes_cliente
 -- =====================================================
-CREATE TABLE cotacao_cliente (
+CREATE TABLE cotacoes_cliente (
     numerario_cotacao INTEGER PRIMARY KEY,
     moeda VARCHAR(20),
     taxa NUMERIC(12,2),
@@ -83,9 +83,9 @@ CREATE TABLE cotacao_cliente (
 );
 
 -- =====================================================
--- TABELA: processo
+-- TABELA: processos
 -- =====================================================
-CREATE TABLE processo (
+CREATE TABLE processos (
     id_processo INTEGER PRIMARY KEY,
     data_inicio_processo DATE,
     id_viagem INTEGER NOT NULL,
@@ -132,10 +132,39 @@ CREATE TABLE custos_extras (
 );
 
 -- =====================================================
--- TABELA: kpi_dashboard
+-- TABELA: kpis_dashboard
 -- =====================================================
-CREATE TABLE kpi_dashboard (
+CREATE TABLE kpis_dashboard (
     chave VARCHAR(50) PRIMARY KEY,
     valor NUMERIC(12,2) NOT NULL,
     descricao VARCHAR(150)
+);
+
+-- =====================================================
+-- ENUM: perfil de usuário
+-- =====================================================
+
+CREATE TYPE tipos_usuario AS ENUM (
+    'ADMIN',
+    'FINANCEIRO',
+    'OPERACIONAL'
+);
+
+-- =====================================================
+-- TABELA: usuarios
+-- Controle básico de login
+-- =====================================================
+
+CREATE TABLE usuarios (
+    id_usuario SERIAL PRIMARY KEY,
+
+    usuario VARCHAR(50) UNIQUE NOT NULL,
+
+    senha_hash TEXT NOT NULL,
+
+    tipo tipos_usuario NOT NULL,
+
+    ativo BOOLEAN DEFAULT TRUE,
+
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
