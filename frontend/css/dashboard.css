@@ -1,15 +1,22 @@
+body {
+    color: #02638F;
+}
+
 #header {
     display: flex;
     justify-content: space-between;
     padding-top: 2vh;
-    border-radius: 0 0 15px 15px;
-    background-color: white;
+    border-radius: 0 0 15px 0;
     .img-topo {
         height: 5vh;
         margin: 0 2vw 0 2vw;
     }
-    div > button {
+    div > span {
+        cursor: pointer;
         margin-right: 4vw;
+        &:hover {
+            font-weight: bold;
+        }
     }
 }
 
@@ -23,11 +30,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: white;
-        width: 15vw;
+        min-width: 15vw;
         h1 {
             margin-top: 1.5em;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
         }
         .ul {
             width: 100%;
@@ -37,7 +43,7 @@
         }
         .li {
             margin-top: 1.5em;
-            background-color: blue;
+            background-color: #02638F;
             width: 90%;
             color: white;
             border-radius: 0 20px 20px 0;
@@ -50,4 +56,84 @@
             left: 10px;
         }
     }
+
+    #conteudo-principal {
+        width: 100%;
+        padding: 4vh 0 0 1vw;
+
+        #abas {
+            display: flex;
+            h3 {
+                width: fit-content;
+                padding: 2vh 3vw;
+                border-radius: 10px 10px 0 0;
+                cursor: pointer;
+            }
+        }
+        
+        #dashboard {
+            min-height: 85vh;
+            padding: 4vh 4vw 8vh 0;
+            > div {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #F5FCFF;
+            box-shadow: 1px 5px 20px #7fbedbee;
+            width: fit-content;
+            padding: 2vh 2vw;
+            margin: 2vh 2vw;
+            border-radius: 15px;
+            text-wrap: nowrap;
+            &.brilho {
+                box-shadow: 1px 5px 20px white
+            }
+            &.azul {
+                color: white;
+                background-color: #1A4A98;
+            }
+            &.azul-escuro {
+                background-color: #1A3A6B;
+                box-shadow: none;
+            }
+            .rota {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                justify-content: space-around;
+                > div {
+                    text-align: center;
+                }
+                img {
+                    width: 10vw;
+                }
+            }
+            .rota-footer {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    }
 }
+
+.white {
+    background-color: white;
+}
+
+.blue {
+    background-color: #B0D8E9;
+}
+
+.linha-cards {
+    display: flex;
+}
+

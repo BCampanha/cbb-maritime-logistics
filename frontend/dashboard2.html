@@ -8,23 +8,24 @@
     <!-- Página de estilos -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/dashboard2.css">
 
     <!-- Conexão com o Supabase pela API JavaScript oficial do Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
-    <div id="header">
+    <div id="header" class="blue">
         <img src="images/logo.png" class="img-topo" alt="Logo horizontal">
         <div>
-            <button>Em andamento</button>
-            <button>Finalizados</button>
-            <button>Futuros</button>
+            <span>Em andamento</span>
+            <span>Finalizados</span>
+            <span>Futuros</span>
         </div>
         <img src="images/user-azul.png" class="img-topo" alt="Logo de usuário">
     </div>
 
     <div id="main">
-        <div id="menu-lateral">
+        <div id="menu-lateral" class="blue">
             <h1>Clientes</h1>
             <div class="ul">
                 <a class="li" href="dashboard2.html">Amazon</a>
@@ -35,13 +36,13 @@
             </a>
         </div>
 
-        <div id="conteudo-principal">
+        <div id="conteudo-principal" class="white">
             <div id="abas">
-                <button>Operacional</button>
-                <button>Financeiro</button>
+                <h3 class="blue">Operacional</h3>
+                <h3 class="blue">Financeiro</h3>
             </div>
 
-            <div id="dashboard">
+            <div id="dashboard" class="blue">
 
                 <div id="operacional-especifico">
                     <div class="linha-cards">
@@ -66,10 +67,9 @@
                         </div>
                     </div>
 
-                    <div class="full">
-                        <div class="card azul">
+                        <div class="card azul" style="min-width: 85%;">
                             <h2>Rota da viagem</h2>
-                            <div class="card azul-escuro">
+                            <div class="card azul-escuro" style="min-width: 100%;">
                                 <div class="rota">
                                     <div>
                                         <img src="images/porto.png" class="bola" alt="Porto">
