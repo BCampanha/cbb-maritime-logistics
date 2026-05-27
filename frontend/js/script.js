@@ -58,4 +58,27 @@ function ver(id) {
     }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const clienteAtual = params.get("cliente");
+
+    if (!clienteAtual) return;
+
+    document.querySelectorAll("#menu-lateral .li").forEach(link => {
+        const url = new URL(link.href, window.location.origin);
+
+        if (url.searchParams.get("cliente") === clienteAtual) {
+            link.classList.add("ativo");
+        }
+    });
+
+    // Exemplo: trocar título
+    const titulo = document.querySelector("#cliente-nome");
+
+    if (titulo) {
+        titulo.textContent = clienteAtual.toUpperCase();
+    }
+});
+
+
 carregarDashboard();
