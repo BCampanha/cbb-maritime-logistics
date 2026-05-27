@@ -14,7 +14,9 @@
 </head>
 <body>
     <div id="header" class="white">
-        <img src="images/logo.png" class="img-topo" alt="Logo horizontal">
+        <a href="dashboard.html">
+            <img src="images/logo.png" class="img-topo" alt="Logo horizontal">
+        </a>
         <div>
             <span>Em andamento</span>
             <span>Finalizados</span>
@@ -44,32 +46,36 @@
                 <div id="operacional-geral">
                     <div class="card" style="min-width: 20%;">
                         <h2>Ranking de países clientes</h2>
-                        <img src="https://placehold.co/200x200" alt="Gráfico de barras - Top 3">
+                        <div id="grafico-ranking">
+                            <img src="https://placehold.co/200x200" alt="Gráfico de barras - Top 3">
+                        </div>
                     </div>
 
                     <div class="card" style="min-width: 50%;">
                         <h2>Custos extras</h2>
-                        <img src="https://placehold.co/350x200" alt="Gráfico de linha">
+                        <div id="grafico-custos-extras">
+                            <img src="https://placehold.co/350x200" alt="Gráfico de linha">
+                        </div>
                     </div>
 
                     <div class="card" style="min-width: 50%;">
                         <h2>Histórico de prazos</h2>
                         <table>
-                            <tr><th>Nome</th><th>Data</th><th>Status</th></tr>
-                            <tr><td>C&A Varejo</td><td></td><td><img src="" alt="Status"></td></tr>
-                            <tr><td>Amazon Shopping</td><td></td><td><img src="" alt="Status"></td></tr>
-                            <tr><td>C&A Varejo</td><td></td><td><img src="" alt="Status"></td></tr>
-                            <tr><td>C&A Varejo</td><td></td><td><img src="" alt="Status"></td></tr>
+                            <thead>
+                                <tr><th>Nome</th><th>Data</th><th>Status</th></tr>
+                            </thead>
+                            <tbody id="tabela-historico-prazos">
+                                <tr>
+                                    <td colspan="3">Carregando...</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
 
                     <div class="card" style="min-width: 20%;">
                         <h2>Top localidades</h2>
-                        <ul>
-                            <li>China</li>
-                            <li>Egito</li>
-                            <li>EUA</li>
-                            <li>Canadá</li>
+                        <ul id="top-localidades">
+                            Carregando...
                         </ul>
                     </div>
                 </div>

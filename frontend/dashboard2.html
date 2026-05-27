@@ -15,7 +15,9 @@
 </head>
 <body>
     <div id="header" class="blue">
-        <img src="images/logo.png" class="img-topo" alt="Logo horizontal">
+        <a href="dashboard.html">
+            <img src="images/logo.png" class="img-topo" alt="Logo horizontal">
+        </a>
         <div>
             <span>Em andamento</span>
             <span>Finalizados</span>
@@ -31,7 +33,7 @@
                 <a class="li" href="dashboard2.html?cliente=amazon">Amazon</a>
                 <a class="li" href="dashboard2.html?cliente=cea">C&A</a>
             </div>
-            <a href="dashboard.html" class="sair">
+            <a href="index.html" class="sair">
                 <img src="images/sair.png" id="porta" alt="Porta (sair)">
             </a>
         </div>
@@ -47,22 +49,22 @@
                 <div id="operacional-especifico">
                     <div class="linha-cards">
                         <div class="card brilho">
-                            <h2>47</h2>
+                            <h2 id="processos-ativos-p">--</h2>
                             <h3>Processos Ativos</h3>
                         </div>
     
                         <div class="card brilho">
-                            <h2>12</h2>
+                            <h2 id="ocorrencias-abertas-p">--</h2>
                             <h3>Ocorrências Abertas</h3>
                         </div>
 
                         <div class="card brilho">
-                            <h2>73%</h2>
+                            <h2 id="docs-processados-p">--</h2>
                             <h3>docs Processados</h3>
                         </div>
 
                         <div class="card brilho">
-                            <h2>8,4</h2>
+                            <h2 id="dias-media">--</h2>
                             <h3>Dias em média</h3>
                         </div>
                     </div>
@@ -73,36 +75,36 @@
                                 <div class="rota">
                                     <div>
                                         <img src="images/porto.png" class="bola" alt="Porto">
-                                        <p><strong>Shangai</strong></p>
-                                        <p>China - Origem</p>
+                                        <p><strong id="rota-porto-origem">--</strong></p>
+                                        <p id="rota-pais-origem">-- - Origem</p>
                                     </div>
-                                    <span>Malaca</span>
+                                    <span>- - -</span>
                                     <div>
-                                        <p>Suez</p>
+                                        <p id="rota-atual">--</p>
                                         <img src="images/barco.png" class="barco" alt="Barco">
                                     </div>
-                                    <span>Atlântico</span>
+                                    <span>- - -</span>
                                     <div>
                                         <img src="images/chegada.png" class="bola" alt="Chegada">
-                                        <p><strong>Santos</strong></p>
-                                        <p>Brasil - Destino</p>
+                                        <p><strong id="rota-porto-destino">--</strong></p>
+                                        <p id="rota-pais-destino">-- - Destino</p>
                                     </div>
                                 </div>
                                 <div class="rota-footer">
                                     <div>
-                                        <h3>19.400</h3>
+                                        <h3 id="km-distancia">--</h3>
                                         <p>km de distância</p>
                                     </div>
                                     <div>
-                                        <h3>18 dias</h3>
+                                        <h3 id="tempo-transito">--</h3>
                                         <p>Tempo de trânsito</p>
                                     </div>
                                     <div>
-                                        <h3>3</h3>
+                                        <h3 id="escalas">--</h3>
                                         <p>Escalas</p>
                                     </div>
                                     <div>
-                                        <h3><em>Em curso</em></h3>
+                                        <h3 id="status"><em>--</em></h3>
                                         <p>Status</p>
                                     </div>
                                 </div>
@@ -111,32 +113,34 @@
 
                         <div class="card">
                             <h2>Custos extras</h2>
-                            <img src="https://placehold.co/350x200" alt="Gráfico de linha">
+                            <div id="grafico-custos-extras-1">
+                                <img src="https://placehold.co/350x200" alt="Gráfico de linha">
+                            </div>
                         </div>
 
                         <div class="card">
                             <h2>Ocorrências</h2>
-                            <h3>12</h3>
+                            <h3 id="num-ocorrencias">--</h3>
                             <p>Abertas</p>
                             <ul>
                                 <li>
                                     <div>
                                         <span>Avarias</span>
-                                        <span>4</span>
+                                        <span id="num-avarias">--</span>
                                     </div>
                                     <img src="https://placehold.co/100x10" alt="">
                                 </li>
                                 <li>
                                     <div>
                                         <span>Extravio</span>
-                                        <span>3</span>
+                                        <span id="num-extravio">--</span>
                                     </div>
                                     <img src="https://placehold.co/100x10" alt="">
                                 </li>
                                 <li>
                                     <div>
                                         <span>Atraso</span>
-                                        <span>5</span>
+                                        <span id="num-atraso">--</span>
                                     </div>
                                     <img src="https://placehold.co/100x10" alt="">
                                 </li>
@@ -149,21 +153,21 @@
                                 <li>
                                     <div>
                                         <span>Processados</span>
-                                        <span>73%</span>
+                                        <span id="docs-processados">--</span>
                                     </div>
                                     <img src="https://placehold.co/300x10" alt="">
                                 </li>
                                 <li>
                                     <div>
                                         <span>Em Análise</span>
-                                        <span>18%</span>
+                                        <span id="docs-em-analise">--</span>
                                     </div>
                                     <img src="https://placehold.co/300x10" alt="">
                                 </li>
                                 <li>
                                     <div>
                                         <span>Pendentes</span>
-                                        <span>9%</span>
+                                        <span id="docs-pendentes">--</span>
                                     </div>
                                     <img src="https://placehold.co/100x10" alt="">
                                 </li>
@@ -174,19 +178,19 @@
                 <div id="financeiro-especifico" style="display: none">
                     <div class="linha-cards">
                         <div class="card brilho">
-                            <h2>R$54.565.135</h2>
+                            <h2 id="total-custos-extras">--</h2>
                             <h3>Total de Custos extras</h3>
                         </div>
                         <div class="card brilho">
-                            <h2>R$12.300.300</h2>
+                            <h2 id="faturamento-processo">--</h2>
                             <h3>Faturamento do Processo</h3>
                         </div>
                         <div class="card brilho">
-                            <h2>R$3.120.400</h2>
+                            <h2 id="custos-armazenagem">--</h2>
                             <h3>Custos de Armazenagem</h3>
                         </div>
                         <div class="card brilho">
-                            <h2>R$8.940.000</h2>
+                            <h2 id="custos-estadia">--</h2>
                             <h3>Custos de Estadia</h3>
                         </div>
                     </div>
@@ -194,19 +198,19 @@
                     <div class="card">
                         <h2>Demurrage</h2>
                         <div class="azul-claro">
-                            <h2>38</h2>
+                            <h2 id="demurrage-dias-totais">--</h2>
                             <p><strong>dias totais</strong></p>
                         </div>
                         <div class="azul-claro">
-                            <h2>R$1.200/dia</h2>
+                            <h2 id="demurrage-preco-medio">--</h2>
                             <p><strong>preço médio</strong></p>
                         </div>
                         <div class="azul-claro">
-                            <h2>R$45.600</h2>
+                            <h2 id="demurrage-custo-total">--</h2>
                             <p><strong>Custo total</strong></p>
                         </div>
                         <div class="azul-claro">
-                            <h2>7</h2>
+                            <h2 id="demurrage-containers">--</h2>
                             <p><strong>Containers</strong></p>
                         </div>
                     </div>
@@ -214,43 +218,49 @@
                     <div class="card">
                         <h2>Armazenagem</h2>
                         <div class="azul-claro">
-                            <h2>22</h2>
+                            <h2 id="armazenagem-dias-totais">--</h2>
                             <p><strong>dias totais</strong></p>
                         </div>
                         <div class="azul-claro">
-                            <h2>R$480/dia</h2>
+                            <h2  id="armazenagem-preco-medio">--</h2>
                             <p><strong>preço médio</strong></p>
                         </div>
                         <div class="azul-claro">
-                            <h2>R$10.560</h2>
+                            <h2  id="armazenagem-custo-total">--</h2>
                             <p><strong>Custo total</strong></p>
                         </div>
                         <div class="azul-claro">
-                            <h2>4</h2>
+                            <h2  id="armazenagem-armazens">--</h2>
                             <p><strong>Armazéns</strong></p>
                         </div>
                     </div>
 
                     <div class="card">
                         <h2>Distribuição de custos</h2>
-                        <img src="https://placehold.co/200x200" alt="Gráfico de pizza">
+                        <div id="grafico-distribuicao-custos">
+                            <img src="https://placehold.co/200x200" alt="Gráfico de pizza">
+                        </div>
                     </div>
 
                     <div class="card">
                         <h2>Faturamento do processo</h2>
                         <table>
-                            <tr><th>Processo</th><th>Valor Faturado</th><th>Status</th></tr>
-                            <tr><td>AMZ-2026-001</td><td>R$320.000</td><td>Pago</td></tr>
-                            <tr><td>AMZ-2026-002</td><td>R$180.000</td><td>Pendente</td></tr>
-                            <tr><td>AMZ-2026-003</td><td>R$450.000</td><td>Pago</td></tr>
-                            <tr><td>AMZ-2026-004</td><td>R$210.000</td><td>Vencido</td></tr>
-                            <tr><td>AMZ-2026-005</td><td>R$390.000</td><td>Pago</td></tr>
+                            <thead>
+                                <tr><th>Processo</th><th>Valor Faturado</th><th>Status</th></tr>
+                            </thead>
+                            <tbody id="tabela-faturamento">
+                                <tr>
+                                    <td colspan="3">Carregando...</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
 
                     <div class="card">
                         <h2>Custos extras</h2>
-                        <img src="https://placehold.co/300x200" alt="Gráfico de linha">
+                        <div id="grafico-custos-extras-2">
+                            <img src="https://placehold.co/300x200" alt="Gráfico de linha">
+                        </div>
                     </div>
                 </div>
             </div>
