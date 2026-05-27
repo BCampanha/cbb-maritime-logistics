@@ -71,13 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
             link.classList.add("ativo");
         }
     });
-
-    // Exemplo: trocar título
-    const titulo = document.querySelector("#cliente-nome");
-
-    if (titulo) {
-        titulo.textContent = clienteAtual.toUpperCase();
-    }
 });
 
 
