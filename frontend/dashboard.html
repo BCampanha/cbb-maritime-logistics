@@ -11,6 +11,9 @@
 
     <!-- Conexão com o Supabase pela API JavaScript oficial do Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div id="header" class="white">
@@ -42,14 +45,14 @@
 
             <div id="dashboard" class="white">
                 <div id="operacional-geral">
-                    <div class="card" style="min-width: 20%;">
+                    <div class="card" style="min-width: 20%; height: 350px;">
                         <h2>Ranking de países clientes</h2>
-                        <img src="https://placehold.co/200x200" alt="Gráfico de barras - Top 3">
+                        <canvas id="chart-ranking-paises" style="max-height: 280px;"></canvas>
                     </div>
 
-                    <div class="card" style="min-width: 50%;">
+                    <div class="card" style="min-width: 50%; height: 350px;">
                         <h2>Custos extras</h2>
-                        <img src="https://placehold.co/350x200" alt="Gráfico de linha">
+                        <canvas id="chart-custos-linha" style="max-height: 280px;"></canvas>
                     </div>
 
                     <div class="card" style="min-width: 50%;">
@@ -76,12 +79,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
 
     <!-- Seção que será manipulada pelo JS para exibir o resultado -->
     <div id="resultado"></div>
