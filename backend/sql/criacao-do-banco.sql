@@ -132,15 +132,6 @@ CREATE TABLE custos_extras (
 );
 
 -- =====================================================
--- TABELA: kpis_dashboard
--- =====================================================
-CREATE TABLE kpis_dashboard (
-    chave VARCHAR(50) PRIMARY KEY,
-    valor NUMERIC(12,2) NOT NULL,
-    descricao VARCHAR(150)
-);
-
--- =====================================================
 -- ENUM: perfil de usuário
 -- =====================================================
 
@@ -167,4 +158,38 @@ CREATE TABLE usuarios (
     ativo BOOLEAN DEFAULT TRUE,
 
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ====================================================
+-- Alterações
+-- AJUSTES NAS TABELAS Processos E Viagens
+-- ====================================================
+DROP TABLE IF EXISTS kpis_dashboard;
+
+ALTER TABLE processos
+ADD COLUMN IF NOT EXISTS status VARCHAR(30) DEFAULT 'em_andamento',
+ADD COLUMN IF NOT EXISTS data_fim_processo DATE,
+ADD COLUMN IF NOT EXISTS status_faturamento VARCHAR(30) DEFAULT 'pendente';
+
+ALTER TABLE viagens
+ADD COLUMN IF NOT EXISTS data_saida DATE,
+ADD COLUMN IF NOT EXISTS data_chegada_real DATE,
+ADD COLUMN IF NOT EXISTS distancia_km NUMERIC(10,2),
+ADD COLUMN IF NOT EXISTS status VARCHAR(30) DEFAULT 'em_curso';
+
+-- ======================================================
+-- NOVA TABELA PARA EVENTOS DO PROCESSO
+-- Ex.: documentos, ocorrências, containers, armazenagem
+-- ======================================================
+
+CREATE TABLE IF NOT EXISTS eventos_processo (
+    id_evento SERIAL PRIMARY KEY,
+    id_processo INTEGER NOT NULL REFERENCES processos(id_processo) ON DELETE CASCADE,
+    tipo_evento VARCHAR(50) NOT NULL,
+    subtipo VARCHAR(50),
+    status VARCHAR(30),
+    quantidade INTEGER DEFAULT 1,
+    valor NUMERIC(12,2),
+    data_evento DATE,
+    descricao TEXT
 );
