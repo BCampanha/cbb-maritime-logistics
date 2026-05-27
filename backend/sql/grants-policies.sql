@@ -20,46 +20,36 @@ ALTER TABLE eventos_processo ENABLE ROW LEVEL SECURITY;
 -- Policies: permite apenas leitura pública dos dados fictícios
 CREATE POLICY "Leitura publica empresas"
 ON empresas FOR SELECT
-TO anon
-USING (true);
+TO anon;
 
 CREATE POLICY "Leitura publica navios"
 ON navios FOR SELECT
-TO anon
-USING (true);
+TO anon;
 
 CREATE POLICY "Leitura publica viagens"
 ON viagens FOR SELECT
-TO anon
-USING (true);
+TO anon;
 
 CREATE POLICY "Leitura publica etapas_viagem"
 ON etapas_viagem FOR SELECT
-TO anon
-USING (true);
+TO anon;
 
 CREATE POLICY "Leitura publica mercadorias"
 ON mercadorias FOR SELECT
-TO anon
-USING (true);
+TO anon;
 
 CREATE POLICY "Leitura publica cotacoes_cliente"
 ON cotacoes_cliente FOR SELECT
-TO anon
-USING (true);
+TO anon;
 
 CREATE POLICY "Leitura publica processos"
 ON processos FOR SELECT
-TO anon
-USING (true);
+TO anon;
 
 CREATE POLICY "Leitura publica custos_extras"
 ON custos_extras FOR SELECT
-TO anon
-USING (true);
+TO anon;
 
 CREATE POLICY "Leitura publica eventos_processo"
 ON eventos_processo FOR SELECT
-TO anon
-USING (true);
-USING (true);
+TO anon;;

@@ -1,3 +1,5 @@
+// Funções para o banco ----------------------------------------------------
+
 const supabaseUrl = 'https://dafzthchjvglzrxjsewi.supabase.co';
 const supabaseKey = 'sb_publishable_GfbL_TckwcfpDwl9D1Y_AA_CDfYdNRL'; // chave pública
 
@@ -6,40 +8,25 @@ const client = window.supabase.createClient(
     supabaseKey
 );
 
-// função para carregar Dashboard
-async function carregarDashboard() {
+console.log("Conexão com Supabase:", client); // confirma se está conectado
 
-    // seleciona todos os resultados da tabela kpi_dashboard (calculada pelo python)
-    const { data, error } = await client
-        .from('kpis_dashboard')
-        .select('*');
-
-    if (error) {
-        console.log(error);
-        return;
-    }
-
-    console.log(data);
-
-    // pega a div com id resultado
-    const div = document.getElementById('resultado');
-
-    // cria um novo parágrafo com os resultados esperados
-    
-    // 1. Lista de kpis
-    const kpis = {};
-    data.forEach(item => {
-        kpis[item.chave] = item.valor;
-    });
-
-    div.innerHTML = `
-        <p>
-            <strong>Total de custos extras: R$ ${kpis.total_custos_extras}</strong>
-            - Total de processos: ${kpis.total_processos}
-        </p>
-    `;
+// Pega cliente da URL (ex: "dashboard2.html?cliente=magalu")
+function pegarClienteDaURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("cliente");
 }
 
+async function carregarProcessosAtivos() {
+    const emAndamento = await client.from("processos").select("*").eq("id_empresa", pegarClienteDaURL()).eq("status", "em_andamento");
+    // const todos = await client.from("processos").select("*").eq("id_empresa", "amazon");
+    console.log(emAndamento.data)
+    document.getElementById("processos-ativos").textContent = emAndamento.data.length // + "/" + todos.data.length;
+}
+
+
+// Funções para a parte estética --------------------------------------------
+
+// Muda cores e visualização do dashboard Financeiro/Operacional
 function ver(id) {
     const financeiro = document.getElementById("financeiro-especifico");
     const financeiroAba = document.getElementById("financeiro-aba");
@@ -58,6 +45,7 @@ function ver(id) {
     }
 }
 
+// Muda estilo do cliente selecionado no menu lateral
 document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const clienteAtual = params.get("cliente");
@@ -73,5 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
-carregarDashboard();
+document.addEventListener("DOMContentLoaded", () => {
+    carregarProcessosAtivos();
+});
