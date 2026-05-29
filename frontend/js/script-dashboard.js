@@ -1,13 +1,5 @@
 // DASHBOARD GERAL
 
-const SUPABASE_URL_DASHBOARD = 'https://dafzthchjvglzrxjsewi.supabase.co';
-const SUPABASE_KEY_DASHBOARD = 'sb_publishable_GfbL_TckwcfpDwl9D1Y_AA_CDfYdNRL';
-
-const dbDashboard = window.supabase.createClient(
-    SUPABASE_URL_DASHBOARD,
-    SUPABASE_KEY_DASHBOARD
-);
-
 function formatarData(data) {
     if (!data) return '--';
 
@@ -38,14 +30,14 @@ function formatarStatusPrazo(processo, viagem) {
 }
 
 async function carregarHistoricoPrazos() {
-    const { data: processos, error: erroProcessos } = await dbDashboard
+    const { data: processos, error: erroProcessos } = await supabaseClient
         .from('processos')
         .select('*')
         .order('data_inicio_processo', { ascending: false });
 
     if (erroProcessos) throw erroProcessos;
 
-    const { data: empresas, error: erroEmpresas } = await dbDashboard
+    const { data: empresas, error: erroEmpresas } = await supabaseClient
         .from('empresas')
         .select('id_empresa, nome');
 
@@ -55,7 +47,7 @@ async function carregarHistoricoPrazos() {
     let viagens = [];
 
     if (idsViagens.length > 0) {
-        const respostaViagens = await dbDashboard
+        const respostaViagens = await supabaseClient
             .from('viagens')
             .select('*')
             .in('id_viagem', idsViagens);
@@ -92,7 +84,7 @@ async function carregarHistoricoPrazos() {
 }
 
 async function carregarTopLocalidades() {
-    const { data, error } = await dbDashboard
+    const { data, error } = await supabaseClient
         .from('etapas_viagem')
         .select('local_etapa');
 
