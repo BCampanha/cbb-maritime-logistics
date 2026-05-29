@@ -61,7 +61,7 @@
 
                         <div class="card brilho">
                             <h2 id="docs-processados">--</h2>
-                            <h3>docs Processados</h3>
+                            <h3>Docs Processados</h3>
                         </div>
 
                         <div class="card brilho">
@@ -116,8 +116,8 @@
 
                         <div class="card" style="min-width: 40vw;">
                             <h2>Custos extras</h2>
-                            <div id="grafico-custos-extras-1">
-                                <img src="https://placehold.co/350x200" alt="Gráfico de linha">
+                            <div class="grafico" style="width: 35vw;">
+                                <canvas class="canvas-custos-extras-cliente"></canvas>
                             </div>
                         </div>
 
@@ -131,21 +131,27 @@
                                         <span>Avarias</span>
                                         <span id="num-avarias">--</span>
                                     </div>
-                                    <img src="https://placehold.co/100x10" alt="">
+                                    <div class="barra">
+                                        <div id="barra-avarias" class="barra-preenchida"></div>
+                                    </div>
                                 </li>
                                 <li>
                                     <div>
                                         <span>Extravio</span>
                                         <span id="num-extravio">--</span>
                                     </div>
-                                    <img src="https://placehold.co/100x10" alt="">
+                                    <div class="barra">
+                                        <div id="barra-extravio" class="barra-preenchida"></div>
+                                    </div>
                                 </li>
                                 <li>
                                     <div>
                                         <span>Atraso</span>
                                         <span id="num-atraso">--</span>
                                     </div>
-                                    <img src="https://placehold.co/100x10" alt="">
+                                    <div class="barra">
+                                        <div id="barra-atraso" class="barra-preenchida"></div>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -158,21 +164,27 @@
                                         <span>Processados</span>
                                         <span id="docs-processados">--</span>
                                     </div>
-                                    <img src="https://placehold.co/300x10" alt="">
+                                    <div class="barra">
+                                        <div id="barra-docs-processados" class="barra-preenchida"></div>
+                                    </div>
                                 </li>
                                 <li>
                                     <div>
                                         <span>Em Análise</span>
                                         <span id="docs-em-analise">--</span>
                                     </div>
-                                    <img src="https://placehold.co/300x10" alt="">
+                                    <div class="barra">
+                                        <div id="barra-docs-em-analise" class="barra-preenchida"></div>
+                                    </div>
                                 </li>
                                 <li>
                                     <div>
                                         <span>Pendentes</span>
                                         <span id="docs-pendentes">--</span>
                                     </div>
-                                    <img src="https://placehold.co/300x10" alt="">
+                                    <div class="barra">
+                                        <div id="barra-docs-pendentes" class="barra-preenchida"></div>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -265,8 +277,8 @@
 
                     <div class="card" style="min-width: 40%;">
                         <h2>Custos extras</h2>
-                        <div id="grafico-custos-extras-2">
-                            <img src="https://placehold.co/300x200" alt="Gráfico de linha">
+                        <div class="grafico">
+                            <canvas class="canvas-custos-extras-cliente" style="min-width: 35vw !important;"></canvas>
                         </div>
                     </div>
                 </div>

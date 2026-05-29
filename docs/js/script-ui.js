@@ -31,24 +31,21 @@ async function carregarClientesMenu() {
 
 // Muda cores e visualização do dashboard Financeiro/Operacional
 function ver(id) {
-    const financeiro = document.getElementById("financeiro-especifico");
-    const financeiroAba = document.getElementById("financeiro-aba");
     const operacional = document.getElementById("operacional-especifico");
+    const financeiro = document.getElementById("financeiro-especifico");
+
     const operacionalAba = document.getElementById("operacional-aba");
-    const atual = document.getElementById(id+'-especifico');
-    const atualAba = document.getElementById(id+'-aba');
-    if (atual.style.display === 'none') {
-        operacional.style.display = 'none'; 
-        financeiro.style.display = 'none';
-        financeiroAba.style.backgroundColor = '#84C2DD';
-        operacionalAba.style.backgroundColor = '#84C2DD';
-        atual.style.display = 'flex';
-        atualAba.style.backgroundColor = '#B0D8E9';
-    }
+    const financeiroAba = document.getElementById("financeiro-aba");
+
+    operacional.style.display = "none";
+    financeiro.style.display = "none";
+
+    operacionalAba.style.backgroundColor = "#84C2DD";
+    financeiroAba.style.backgroundColor = "#84C2DD";
+
+    document.getElementById(id + "-especifico").style.display = "flex";
+    document.getElementById(id + "-aba").style.backgroundColor = "#B0D8E9";
 }
-
-
-
 
 // CHAMA FUNÇÕES
 document.addEventListener("DOMContentLoaded", () => {

@@ -1,0 +1,16 @@
+.barra {
+    width: 100%;
+    height: 10px;
+    background-color: #d9eef7;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 6px;
+}
+
+.barra-preenchida {
+    height: 100%;
+    width: 0%;
+    background-color: #2f80a8;
+    border-radius: 20px;
+    transition: width 0.3s ease;
+}

@@ -241,10 +241,20 @@ function preencherOcorrencias(dados) {
     const ocorrencias = dados.eventos.filter((e) => e.tipo_evento === 'ocorrencia');
     const abertas = ocorrencias.filter((e) => e.status === 'aberta');
 
+    const avarias = abertas.filter((e) => e.subtipo === 'avaria').length;
+    const extravio =  abertas.filter((e) => e.subtipo === 'extravio').length;
+    const atraso = abertas.filter((e) => e.subtipo === 'atraso').length;
+
     setTexto('num-ocorrencias', abertas.length);
-    setTexto('num-avarias', abertas.filter((e) => e.subtipo === 'avaria').length);
-    setTexto('num-extravio', abertas.filter((e) => e.subtipo === 'extravio').length);
-    setTexto('num-atraso', abertas.filter((e) => e.subtipo === 'atraso').length);
+    setTexto('num-avarias', avarias);
+    setTexto('num-extravio', extravio);
+    setTexto('num-atraso', atraso);
+
+    const totalTiposOcorrencias = avarias + extravio + atraso;
+
+    preencherBarra("barra-avarias", avarias, totalTiposOcorrencias);
+    preencherBarra("barra-extravio", extravio, totalTiposOcorrencias);
+    preencherBarra("barra-atraso", atraso, totalTiposOcorrencias);
 }
 
 function preencherDocumentos(dados) {
@@ -254,12 +264,16 @@ function preencherDocumentos(dados) {
     function percentual(status) {
         if (total === 0) return '0%';
         const quantidade = documentos.filter((e) => e.status === status).length;
-        return `${Math.round((quantidade / total) * 100)}%`;
+        return Math.round((quantidade / total) * 100);
     }
 
-    setTodos('docs-processados', percentual('processado'));
-    setTexto('docs-em-analise', percentual('em_analise'));
-    setTexto('docs-pendentes', percentual('pendente'));
+    setTodos('docs-processados', `${percentual('processado')}%`);
+    setTexto('docs-em-analise', `${percentual('em_analise')}%`);
+    setTexto('docs-pendentes', `${percentual('pendente')}%`);
+
+    preencherBarra("barra-docs-processados", percentual('processado'), 100);
+    preencherBarra("barra-docs-em-analise", percentual('procesem_analisesado'), 100);
+    preencherBarra("barra-docs-pendentes", percentual('pendente'), 100);
 }
 
 function preencherCardsFinanceiros(dados) {
@@ -389,4 +403,117 @@ async function carregarDashboardCliente() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', carregarDashboardCliente);
+
+// GRÁFICOS ---------------------------------------------------------------
+// Carrega os gráficos de custos extras do cliente selecionado
+async function carregarGraficosCustosExtrasCliente() {
+    const cliente = pegarClienteDaURL();
+
+    const { data, error } = await supabaseClient
+        .from("custos_extras")
+        .select(`
+            avarias,
+            lavagem_container,
+            armazenagem,
+            dta,
+            demurrage_custo,
+            processos (
+                id_empresa,
+                data_inicio_processo
+            )
+        `)
+        .eq("processos.id_empresa", cliente);
+
+    if (error) {
+        console.log(error);
+        return;
+    }
+
+    const custosPorMes = {};
+
+    data.forEach(item => {
+        if (!item.processos) return;
+
+        const mes = item.processos.data_inicio_processo.slice(0, 7);
+
+        if (!custosPorMes[mes]) {
+            custosPorMes[mes] = {
+                avarias: 0,
+                lavagem_container: 0,
+                armazenagem: 0,
+                dta: 0,
+                demurrage: 0
+            };
+        }
+
+        custosPorMes[mes].avarias += Number(item.avarias || 0);
+        custosPorMes[mes].lavagem_container += Number(item.lavagem_container || 0);
+        custosPorMes[mes].armazenagem += Number(item.armazenagem || 0);
+        custosPorMes[mes].dta += Number(item.dta || 0);
+        custosPorMes[mes].demurrage += Number(item.demurrage_custo || 0);
+    });
+
+    const meses = Object.keys(custosPorMes).sort();
+
+    const labels = meses.map(mes => {
+        const [ano, numeroMes] = mes.split("-");
+        return `${numeroMes}/${ano}`;
+    });
+
+    const datasets = [
+        {
+            label: "Avarias",
+            data: meses.map(mes => custosPorMes[mes].avarias),
+            tension: 0.3
+        },
+        {
+            label: "Lavagem container",
+            data: meses.map(mes => custosPorMes[mes].lavagem_container),
+            tension: 0.3
+        },
+        {
+            label: "Armazenagem",
+            data: meses.map(mes => custosPorMes[mes].armazenagem),
+            tension: 0.3
+        },
+        {
+            label: "DTA",
+            data: meses.map(mes => custosPorMes[mes].dta),
+            tension: 0.3
+        },
+        {
+            label: "Demurrage",
+            data: meses.map(mes => custosPorMes[mes].demurrage),
+            tension: 0.3
+        }
+    ];
+
+    document.querySelectorAll(".canvas-custos-extras-cliente").forEach(canvas => {
+        new Chart(canvas, {
+            type: "line",
+            data: {
+                labels: labels,
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    });
+}
+
+function preencherBarra(id, valor, total) {
+    const barra = document.getElementById(id);
+
+    if (!barra) return;
+
+    const percentual = total > 0 ? (valor / total) * 100 : 0;
+
+    barra.style.width = percentual + "%";
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    carregarDashboardCliente();
+    carregarGraficosCustosExtrasCliente();
+})
