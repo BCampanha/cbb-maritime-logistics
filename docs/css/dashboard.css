@@ -16,9 +16,6 @@ body {
     div > span {
         cursor: pointer;
         margin-right: 4vw;
-        &:hover {
-            font-weight: bold;
-        }
     }
 }
 
@@ -37,7 +34,7 @@ body {
             margin-top: 1.5em;
             font-size: 1.5rem;
         }
-        .ul {
+        .ul, .ol {
             width: 100%;
             text-align: center;
             display: flex;
@@ -81,7 +78,7 @@ body {
             display: flex;
             h3 {
                 width: fit-content;
-                padding: 2vh 3vw;
+                padding: 1.5vh 3vw;
                 border-radius: 10px 10px 0 0;
                 cursor: pointer;
             }
@@ -139,9 +136,12 @@ body {
             }
         }
 
-        table, ul {
+        table, ul, ol {
             width: 100%;
             justify-content: space-between;
+            li, td {
+                padding: 0.2em 0;
+            }
             > li > div {
                 display: flex;
                 justify-content: space-between;
@@ -178,7 +178,7 @@ body {
 }
 
 .grafico {
-    height: 35vh;
+    height: 25vh;
 }
 
 .linha-cards {
