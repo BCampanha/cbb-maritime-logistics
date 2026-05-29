@@ -6,7 +6,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 2vh;
+    padding-top: 0.5vh;
     border-radius: 0 0 15px 0;
     .img-topo {
         height: 5vh;
@@ -60,8 +60,8 @@ body {
         }
         .sair {
             position: fixed;
-            bottom: 10px;
-            left: 10px;
+            bottom: 7vh;
+            left: 1vw;
         }
     }
 
@@ -102,7 +102,7 @@ body {
             box-shadow: 1px 5px 20px #7fbedbee;
             width: fit-content;
             padding: 2vh 2vw;
-            margin: 2vh 1vw;
+            margin: 1vh 1vw;
             border-radius: 15px;
             &.brilho {
                 box-shadow: 1px 5px 20px white
