@@ -2,9 +2,12 @@
 
 Sistema de gerenciamento logístico marítimo desenvolvido com PostgreSQL no Supabase, dashboard web em HTML, CSS e JavaScript, e análise de dados em Python.
 
+## Deploy
+Projeto disponível em https://bcampanha.github.io/cbb-maritime-logistics/
+
 ## Integrantes
 
-Beatriz Campanha, Beatriz Albuquerque, Caroline
+Beatriz Campanha, Beatriz Albuquerque, Caroline Nascimento
 
 
 ## Tecnologias Utilizadas
@@ -27,30 +30,6 @@ Beatriz Campanha, Beatriz Albuquerque, Caroline
   * Visualização de viagens marítimas
   * Resumo de custos extras
   * Gerenciamento logístico
-
-
-## Configuração do Projeto
-
-### 1. Banco de Dados
-
-Execute o arquivo `database.sql` no SQL Editor do Supabase.
-
-### 2. Configuração da API
-
-No arquivo `config.js`:
-
-```javascript
-const SUPABASE_URL = 'SUA_URL';
-const SUPABASE_KEY = 'SUA_ANON_KEY';
-```
-
-### 3. Executar o Projeto
-
-Abra o arquivo `index.html` no navegador.
-
-## Segurança
-
-O projeto utiliza Row Level Security (RLS) e policies de leitura.
 
 
 ## Licença
