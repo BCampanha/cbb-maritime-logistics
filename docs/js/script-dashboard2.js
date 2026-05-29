@@ -513,7 +513,81 @@ function preencherBarra(id, valor, total) {
     barra.style.width = percentual + "%";
 }
 
+// Carrega o gráfico de distribuição de custos do cliente selecionado
+async function carregarGraficoPizza() {
+    const cliente = pegarClienteDaURL();
+
+    const { data, error } = await supabaseClient
+        .from("custos_extras")
+        .select(`
+            avarias,
+            lavagem_container,
+            armazenagem,
+            dta,
+            demurrage_custo,
+            processos (
+                id_empresa
+            )
+        `)
+        .eq("processos.id_empresa", cliente);
+
+    if (error) {
+        console.log(error);
+        return;
+    }
+
+    let avarias = 0;
+    let lavagem = 0;
+    let armazenagem = 0;
+    let dta = 0;
+    let demurrage = 0;
+
+    data.forEach(item => {
+        if (!item.processos) return;
+
+        avarias += Number(item.avarias || 0);
+        lavagem += Number(item.lavagem_container || 0);
+        armazenagem += Number(item.armazenagem || 0);
+        dta += Number(item.dta || 0);
+        demurrage += Number(item.demurrage_custo || 0);
+    });
+
+    const canvas = document.getElementById("canvas-grafico-pizza");
+
+    new Chart(canvas, {
+        type: "doughnut",
+        data: {
+            labels: [
+                "Avarias",
+                "Lavagem",
+                "Armazenagem",
+                "DTA",
+                "Demurrage"
+            ],
+            datasets: [{
+                data: [
+                    avarias,
+                    lavagem,
+                    armazenagem,
+                    dta,
+                    demurrage
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: "right"
+                }
+            }
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     carregarDashboardCliente();
     carregarGraficosCustosExtrasCliente();
+    carregarGraficoPizza();
 })
