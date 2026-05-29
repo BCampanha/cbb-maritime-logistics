@@ -12,6 +12,7 @@
 
     <!-- Conexão com o Supabase pela API JavaScript oficial do Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div id="header" class="white">
@@ -46,15 +47,15 @@
                 <div id="operacional-geral">
                     <div class="card" style="min-width: 22vw;">
                         <h2>Ranking de países clientes</h2>
-                        <div id="grafico-ranking">
-                            <img src="https://placehold.co/200x200" alt="Gráfico de barras - Top 3">
+                        <div id="grafico-ranking" class="grafico">
+                            <canvas id="canvas-ranking-paises"></canvas>
                         </div>
                     </div>
 
                     <div class="card" style="min-width: 46vw;">
                         <h2>Custos extras</h2>
-                        <div id="grafico-custos-extras">
-                            <img src="https://placehold.co/350x200" alt="Gráfico de linha">
+                        <div id="grafico-custos-extras" class="grafico"  style="width: 35vw;">
+                            <canvas id="canvas-custos-extras"></canvas>
                         </div>
                     </div>
 

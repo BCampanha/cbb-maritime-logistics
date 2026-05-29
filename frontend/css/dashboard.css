@@ -177,6 +177,10 @@ body {
     }
 }
 
+.grafico {
+    height: 35vh;
+}
+
 .linha-cards {
     width: 100%;
 }

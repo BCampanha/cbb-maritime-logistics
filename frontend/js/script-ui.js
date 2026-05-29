@@ -47,7 +47,78 @@ function ver(id) {
     }
 }
 
-// Muda estilo do cliente selecionado no menu lateral
+// ----------- GRÁFICOS 
+function carregarGraficoCustosExtrasTeste() {
+    const canvas = document.getElementById("canvas-custos-extras");
+
+    new Chart(canvas, {
+        type: "line",
+        data: {
+            labels: ["Jan", "Fev", "Mar", "Abr", "Mai"],
+            datasets: [
+                {
+                    label: "Avarias",
+                    data: [5000, 8000, 3000, 7000, 4000],
+                    tension: 0.3
+                },
+                {
+                    label: "Lavagem container",
+                    data: [2000, 1500, 2500, 3000, 1800],
+                    tension: 0.3
+                },
+                {
+                    label: "Armazenagem",
+                    data: [9000, 12000, 8000, 15000, 10000],
+                    tension: 0.3
+                },
+                {
+                    label: "DTA",
+                    data: [3000, 4000, 2000, 5000, 3500],
+                    tension: 0.3
+                },
+                {
+                    label: "Demurrage",
+                    data: [10000, 18000, 7000, 22000, 16000],
+                    tension: 0.3
+                }
+            ]
+        },
+        options: {
+        responsive: true,
+        maintainAspectRatio: false
+    }
+    });
+}
+
+function carregarRankingPaisesTeste() {
+    const canvas = document.getElementById("canvas-ranking-paises");
+
+    new Chart(canvas, {
+        type: "bar",
+        data: {
+            labels: [
+                "2º\nEUA",
+                "1º\nChina",
+                "3º\nCanadá"
+            ],
+            datasets: [{
+                label: "Processos",
+                data: [7, 12, 4],
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+}
+// --------------------
+
+
+// CHAMA FUNÇÕES
 document.addEventListener("DOMContentLoaded", () => {
     carregarClientesMenu();
+    carregarGraficoCustosExtrasTeste();
+    carregarRankingPaisesTeste()
 });

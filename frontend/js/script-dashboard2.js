@@ -1,13 +1,5 @@
 // DASHBOARD ESPECÍFICO DO CLIENTE
 
-const SUPABASE_URL_DASHBOARD2 = 'https://dafzthchjvglzrxjsewi.supabase.co';
-const SUPABASE_KEY_DASHBOARD2 = 'sb_publishable_GfbL_TckwcfpDwl9D1Y_AA_CDfYdNRL';
-
-const supabaseClient2 = window.supabase.createClient(
-    SUPABASE_URL_DASHBOARD2,
-    SUPABASE_KEY_DASHBOARD2
-);
-
 // pega cliente da url
 function pegarClienteDaURL() {
     const params = new URLSearchParams(window.location.search);
@@ -40,6 +32,14 @@ function formatarMoeda(valor) {
 
 function formatarNumero(valor) {
     return Number(valor || 0).toLocaleString('pt-BR');
+}
+
+function formatarData(data) {
+    if (!data) return '--';
+
+    return new Date(data).toLocaleDateString('pt-BR', {
+        timeZone: 'UTC'
+    });
 }
 
 function formatarStatus(status) {
@@ -90,7 +90,7 @@ function obterIdsProcessos(processos) {
 // funções para preencher o dashboard --------------------------------------------
 
 async function buscarDadosCliente(idEmpresa) {
-    const { data: empresa, error: erroEmpresa } = await supabaseClient2
+    const { data: empresa, error: erroEmpresa } = await supabaseClient
         .from('empresas')
         .select('*')
         .eq('id_empresa', idEmpresa)
@@ -98,7 +98,7 @@ async function buscarDadosCliente(idEmpresa) {
 
     if (erroEmpresa) throw erroEmpresa;
 
-    const { data: processos, error: erroProcessos } = await supabaseClient2
+    const { data: processos, error: erroProcessos } = await supabaseClient
         .from('processos')
         .select('*')
         .eq('id_empresa', idEmpresa)
@@ -111,7 +111,7 @@ async function buscarDadosCliente(idEmpresa) {
 
     let viagens = [];
     if (idsViagens.length > 0) {
-        const resposta = await supabaseClient2
+        const resposta = await supabaseClient
             .from('viagens')
             .select('*')
             .in('id_viagem', idsViagens);
@@ -124,7 +124,7 @@ async function buscarDadosCliente(idEmpresa) {
     let eventos = [];
 
     if (idsProcessos.length > 0) {
-        const respostaCustos = await supabaseClient2
+        const respostaCustos = await supabaseClient
             .from('custos_extras')
             .select('*')
             .in('id_processo', idsProcessos);
@@ -132,7 +132,7 @@ async function buscarDadosCliente(idEmpresa) {
         if (respostaCustos.error) throw respostaCustos.error;
         custos = respostaCustos.data || [];
 
-        const respostaEventos = await supabaseClient2
+        const respostaEventos = await supabaseClient
             .from('eventos_processo')
             .select('*')
             .in('id_processo', idsProcessos);
@@ -201,7 +201,7 @@ async function preencherRota(dados) {
     const viagem = dados.viagens.find((v) => v.id_viagem === processoRota.id_viagem);
     if (!viagem) return;
 
-    const { data: etapas, error } = await supabaseClient2
+    const { data: etapas, error } = await supabaseClient
         .from('etapas_viagem')
         .select('*')
         .eq('id_viagem', viagem.id_viagem)
@@ -220,6 +220,10 @@ async function preencherRota(dados) {
         : '--';
 
     setTexto('rota-atual', etapaAtual);
+    setTexto(
+    'rota-atual-complemento',
+    `Partida: ${formatarData(viagem.data_saida)} | Previsão Conclusão: ${formatarData(viagem.previsao_chegada_inicial)}`
+    );
     setTexto('km-distancia', formatarNumero(viagem.distancia_km || 0));
 
     const diasTransito = diferencaDias(
@@ -230,6 +234,7 @@ async function preencherRota(dados) {
     setTexto('tempo-transito', diasTransito !== null ? `${diasTransito} dias` : '--');
     setTexto('escalas', etapasEncontradas.length);
     setTexto('status', formatarStatus(viagem.status));
+
 }
 
 function preencherOcorrencias(dados) {
@@ -286,7 +291,7 @@ async function preencherFaturamento(dados) {
     let cotacoes = [];
 
     if (numerarios.length > 0) {
-        const { data, error } = await supabaseClient2
+        const { data, error } = await supabaseClient
             .from('cotacoes_cliente')
             .select('*')
             .in('numerario_cotacao', numerarios);

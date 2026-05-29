@@ -126,4 +126,6 @@ async function carregarDashboardGeral() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', carregarDashboardGeral);
+document.addEventListener('DOMContentLoaded', () => {
+    carregarDashboardGeral();
+});
