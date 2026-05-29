@@ -1,29 +1,3 @@
-// Funções para o banco ----------------------------------------------------
-
-const supabaseUrl = 'https://dafzthchjvglzrxjsewi.supabase.co';
-const supabaseKey = 'sb_publishable_GfbL_TckwcfpDwl9D1Y_AA_CDfYdNRL'; // chave pública
-
-const client = window.supabase.createClient(
-    supabaseUrl,
-    supabaseKey
-);
-
-console.log("Conexão com Supabase:", client); // confirma se está conectado
-
-// Pega cliente da URL (ex: "dashboard2.html?cliente=magalu")
-function pegarClienteDaURL() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("cliente");
-}
-
-async function carregarProcessosAtivos() {
-    const emAndamento = await client.from("processos").select("*").eq("id_empresa", pegarClienteDaURL()).eq("status", "em_andamento");
-    // const todos = await client.from("processos").select("*").eq("id_empresa", "amazon");
-    console.log(emAndamento.data)
-    document.getElementById("processos-ativos").textContent = emAndamento.data.length // + "/" + todos.data.length;
-}
-
-
 // Funções para a parte estética --------------------------------------------
 
 // Muda cores e visualização do dashboard Financeiro/Operacional
@@ -59,8 +33,4 @@ document.addEventListener("DOMContentLoaded", () => {
             link.classList.add("ativo");
         }
     });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    carregarProcessosAtivos();
 });
